@@ -1,0 +1,51 @@
+{
+  "name": "webext-experiment-utils",
+  "description": "Utilities for building / scaffolding WebExtension Experiments.",
+  "version": "0.1.0",
+  "author": "Mozilla",
+  "bin": {
+    "documentSchema": "bin/documentSchema.js",
+    "generateStubApi": "bin/generateStubApi.js",
+    "verifyWeeSchema": "bin/verifyWeeSchema.js"
+  },
+  "dependencies": {
+    "ajv": "^6.5.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-mozilla": "^0.13.0",
+    "eslint-plugin-no-unsanitized": "^3.0.2",
+    "fixpack": "^2.3.1",
+    "npm-run-all": "^4.1.2",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.11.0"
+  },
+  "engines": {
+    "npm": "^6.1.0"
+  },
+  "files": [
+    "bin/documentSchema.js",
+    "bin/generateStubApi.js",
+    "bin/verifyWeeSchema.js",
+    "wee-schema-schema.json"
+  ],
+  "license": "MPL-2.0",
+  "pre-commit": [
+    "format"
+  ],
+  "scripts": {
+    "eslint": "eslint . --ext js --ext json",
+    "eslint-fix": "npm run eslint -- --fix",
+    "format": "prettier '**/*.{css,js,json,md}' --trailing-comma=all --ignore-path=.eslintignore --write && npm run eslint-fix",
+    "generate": "npm-run-all -s -n generate:schema:* generate:docs:* generate:stubApi:*",
+    "generate:docs:example": "cd example && node ../bin/documentSchema.js schema.json > api.md",
+    "generate:schema:example": "cd example && yaml2json schema.yaml -p > schema.json && node ../bin/verifyWeeSchema.js schema.json",
+    "generate:stubApi:example": "cd example && node ../bin/generateStubApi.js ./schema.json > stubApi.js",
+    "lint": "npm-run-all lint:*",
+    "lint:eslint": "npm run eslint",
+    "lint:fixpack": "fixpack",
+    "postgenerate": "npm run format"
+  }
+}

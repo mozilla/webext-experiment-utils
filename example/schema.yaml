@@ -1,0 +1,61 @@
+# Example API interface schema
+# https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html
+#
+# - properties
+# - functions
+# - events
+# - types
+#
+# Note: JSONSchema for WEE interfaces is a modified version of Draft-03.
+#
+# Note: possible `types` are here
+# - https://dxr.mozilla.org/mozilla-central/source/toolkit/components/extensions/Schemas.jsm#2417-2427
+# - type property:
+#   boolean, integer, number, string, array, object, or any.
+
+#
+# Note: "choices" is a non-standard extension to draft-03, see:
+# - https://dxr.mozilla.org/mozilla-central/source/toolkit/components/extensions/Schemas.jsm#2875-2879
+#
+
+---
+- namespace: foo
+  description: Example interface schema to demonstrate webext-experiment-utils
+  types:
+  - id: AnyObject
+    $schema: "http://json-schema.org/draft-04/schema"
+    type: object
+    additionalProperties: true
+    testcase: {foo: 'bar'}
+
+  functions:
+  - name: doSomething
+    type: function
+    description: |
+      Do something with the given payload.
+    async: true
+    parameters:
+    - name: payload
+      $ref: AnyObject
+
+    defaultReturn: undefined
+    returns:
+
+  events:
+  - name: onFoo
+    type: function
+    defaultReturn: {foo: 'bar'}
+    description: Fires when deemed appropriate
+    parameters:  # for the callback
+    - name: fooInfo
+      type: object
+
+- namespace: fooDebug
+  description: Example interface schema secondary namespace
+  functions:
+  - name: reset
+    type: function
+    async: true
+    description: |
+      Reset the foo internal state, for debugging purposes.
+    parameters: []

@@ -1,0 +1,64 @@
+[
+  {
+    "namespace": "foo",
+    "description":
+      "Example interface schema to demonstrate webext-experiment-utils",
+    "types": [
+      {
+        "id": "AnyObject",
+        "$schema": "http://json-schema.org/draft-04/schema",
+        "type": "object",
+        "additionalProperties": true,
+        "testcase": {
+          "foo": "bar"
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "doSomething",
+        "type": "function",
+        "description": "Do something with the given payload.\n",
+        "async": true,
+        "parameters": [
+          {
+            "name": "payload",
+            "$ref": "AnyObject"
+          }
+        ],
+        "defaultReturn": "undefined",
+        "returns": null
+      }
+    ],
+    "events": [
+      {
+        "name": "onFoo",
+        "type": "function",
+        "defaultReturn": {
+          "foo": "bar"
+        },
+        "description": "Fires when deemed appropriate",
+        "parameters": [
+          {
+            "name": "fooInfo",
+            "type": "object"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "fooDebug",
+    "description": "Example interface schema secondary namespace",
+    "functions": [
+      {
+        "name": "reset",
+        "type": "function",
+        "async": true,
+        "description":
+          "Reset the foo internal state, for debugging purposes.\n",
+        "parameters": []
+      }
+    ]
+  }
+]
