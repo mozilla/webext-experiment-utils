@@ -7,3 +7,9 @@ Tools for rapid development of WebExtension Experiments based on a `schema.json`
 - verifyWeeSchema - verifies that `schema.json` is a valid WebExtension Experiments schema
 
 For a usage example, see the `npm run generate` command in [./package.json](./package.json) and the example files in [./example/](./example/).
+
+# Installation
+
+```shell
+npm install --save-dev motin/webext-experiment-utils#develop
+```
