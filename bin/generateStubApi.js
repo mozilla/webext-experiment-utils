@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-env node */
 
 /** Goal: create an Example (fake) Api from
