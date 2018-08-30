@@ -11,7 +11,7 @@ For a usage example, see the `npm run generate` command in [./package.json](./pa
 ## Installation
 
 ```shell
-npm install --save-dev motin/webext-experiment-utils#develop
+npm install --save-dev mozilla/webext-experiment-utils#develop
 ```
 
 ## Hints
