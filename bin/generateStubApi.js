@@ -8,7 +8,9 @@
  */
 const path = require("path");
 
-const FILEHEADER = `/* eslint-disable */
+const FILEHEADER = `/* eslint-env commonjs */
+/* eslint no-logger: off */
+/* global ExtensionAPI */
 
 ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
 ChromeUtils.import("resource://gre/modules/ExtensionUtils.jsm");
