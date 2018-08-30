@@ -29,6 +29,7 @@ function schema2fakeApi(schemaApiJSON) {
   process.stdout.write(`
 this.${firstNamespace} = class extends ExtensionAPI {
   getAPI(context) {
+    const apiEventEmitter = new EventEmitter();
     return {`);
 
   for (const i in schemaApiJSON) {
