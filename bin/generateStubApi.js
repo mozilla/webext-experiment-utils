@@ -13,10 +13,10 @@ const FILEHEADER = `/* eslint-disable */
 ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
 ChromeUtils.import("resource://gre/modules/ExtensionUtils.jsm");
 
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
 const { EventManager } = ExtensionCommon;
-// eslint-disable-next-line no-undef
-const { EventEmitter } = ExtensionUtils;
+const EventEmitter =
+  ExtensionCommon.EventEmitter || ExtensionUtils.EventEmitter;
 `;
 
 function schema2fakeApi(schemaApiJSON) {
