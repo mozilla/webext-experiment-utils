@@ -61,8 +61,14 @@ this.${firstNamespace} = class extends ExtensionAPI {
       ${elem.name}: ${["", "async "][Boolean(elem.async) * 1]}function ${
   elem.name
 }  ( ${args} ) {
-        console.log("Called ${elem.name}(${args})", ${args});
-        return ${JSON.stringify(elem.defaultReturn)};
+        try {
+          console.log("Called ${elem.name}(${args})", ${args});
+          return ${JSON.stringify(elem.defaultReturn)};
+        } catch (error) {
+          // Surface otherwise silent or obscurely reported errors
+          console.error(error.message, error.stack);
+          throw new ExtensionError(error.message);
+        }
       },`);
     }
     // events

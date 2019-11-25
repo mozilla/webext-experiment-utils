@@ -30,8 +30,14 @@ this.experiments.foo = class extends ExtensionAPI {
         foo: {
           /* Do something with the given payload. */
           doSomething: async function doSomething(payload) {
-            console.log("Called doSomething(payload)", payload);
-            return "undefined";
+            try {
+              console.log("Called doSomething(payload)", payload);
+              return "undefined";
+            } catch (error) {
+              // Surface otherwise silent or obscurely reported errors
+              console.error(error.message, error.stack);
+              throw new ExtensionError(error.message);
+            }
           },
 
           // https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html
@@ -50,8 +56,14 @@ this.experiments.foo = class extends ExtensionAPI {
       fooDebug: {
         /* Reset the foo internal state, for debugging purposes. */
         reset: async function reset() {
-          console.log("Called reset()");
-          return undefined;
+          try {
+            console.log("Called reset()");
+            return undefined;
+          } catch (error) {
+            // Surface otherwise silent or obscurely reported errors
+            console.error(error.message, error.stack);
+            throw new ExtensionError(error.message);
+          }
         },
       },
     };
