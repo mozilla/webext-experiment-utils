@@ -42,14 +42,18 @@ this.foo = class extends ExtensionAPI {
 
           // https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html
           /* Fires when deemed appropriate */
-          onFoo: new EventManager(context, "experiments.foo:onFoo", fire => {
-            const listener = (eventReference, arg1) => {
-              fire.async(arg1);
-            };
-            apiEventEmitter.on("foo", listener);
-            return () => {
-              apiEventEmitter.off("foo", listener);
-            };
+          onFoo: new EventManager({
+            context,
+            name: "experiments.foo:onFoo",
+            register: fire => {
+              const listener = async (eventReference, arg1) => {
+                await fire.async(arg1);
+              };
+              apiEventEmitter.on("foo", listener);
+              return () => {
+                apiEventEmitter.off("foo", listener);
+              };
+            },
           }).api(),
         },
       },

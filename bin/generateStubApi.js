@@ -82,16 +82,18 @@ this.${lastpartOfFirstNamespace} = class extends ExtensionAPI {
       eventStrings.push(`
       // https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html
       /* ${elem.description} */
-      ${elem.name}: new EventManager(
+      ${elem.name}: new EventManager({
         context,
-        "${ns}:${elem.name}", fire => {
-        const listener = (eventReference, arg1) => {
-          fire.async(arg1);
-        };
-        apiEventEmitter.on("${elemNameWithoutOn}", listener);
-        return () => {
-          apiEventEmitter.off("${elemNameWithoutOn}", listener);
-        };
+        name: "${ns}:${elem.name}",
+        register: fire => {
+          const listener = async (eventReference, arg1) => {
+            await fire.async(arg1);
+          };
+          apiEventEmitter.on("${elemNameWithoutOn}", listener);
+          return () => {
+            apiEventEmitter.off("${elemNameWithoutOn}", listener);
+          };
+        },
       }).api(),
       `);
     }
