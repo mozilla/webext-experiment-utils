@@ -1,5 +1,6 @@
 /* eslint-env commonjs */
 /* eslint no-logger: off */
+/* eslint no-unused-vars: off */
 /* global ExtensionAPI */
 
 ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
