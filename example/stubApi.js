@@ -3,16 +3,26 @@
 /* eslint no-unused-vars: off */
 /* global ExtensionAPI */
 
-ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-ChromeUtils.import("resource://gre/modules/ExtensionUtils.jsm");
-
-/* eslint-disable no-undef */
-const { EventManager } = ExtensionCommon;
-const EventEmitter =
-  ExtensionCommon.EventEmitter || ExtensionUtils.EventEmitter;
-
 this.experiments.foo = class extends ExtensionAPI {
   getAPI(context) {
+    const { Services } = ChromeUtils.import(
+      "resource://gre/modules/Services.jsm",
+      {},
+    );
+
+    const { ExtensionCommon } = ChromeUtils.import(
+      "resource://gre/modules/ExtensionCommon.jsm",
+      {},
+    );
+
+    const { EventManager, EventEmitter } = ExtensionCommon;
+
+    const { ExtensionUtils } = ChromeUtils.import(
+      "resource://gre/modules/ExtensionUtils.jsm",
+      {},
+    );
+    const { ExtensionError } = ExtensionUtils;
+
     const apiEventEmitter = new EventEmitter();
     return {
       experiments: {
