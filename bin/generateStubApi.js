@@ -13,6 +13,8 @@ const FILEHEADER = `/* eslint-env commonjs */
 /* eslint no-console: ["warn", { allow: ["info", "warn", "error"] }] */
 /* global ExtensionAPI */
 
+"use strict";
+
 `;
 
 function schema2fakeApi(schemaApiJSON) {

@@ -3,6 +3,8 @@
 /* eslint no-console: ["warn", { allow: ["info", "warn", "error"] }] */
 /* global ExtensionAPI */
 
+"use strict";
+
 this.foo = class extends ExtensionAPI {
   getAPI(context) {
     const { Services } = ChromeUtils.import(
