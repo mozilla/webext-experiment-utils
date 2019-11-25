@@ -3,38 +3,18 @@
   "description": "Utilities for building / scaffolding WebExtension Experiments.",
   "version": "0.1.0",
   "author": "Mozilla",
-  "bin": {
-    "documentSchema": "bin/documentSchema.js",
-    "generateStubApi": "bin/generateStubApi.js",
-    "verifyWeeSchema": "bin/verifyWeeSchema.js"
-  },
-  "dependencies": {
-    "ajv": "^6.5.0",
-    "yamljs": "^0.3.0"
-  },
-  "devDependencies": {
-    "eslint": "^5.14.1",
-    "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-mozilla": "^0.13.0",
-    "eslint-plugin-no-unsanitized": "^3.0.2",
-    "fixpack": "^2.3.1",
-    "npm-run-all": "^4.1.2",
-    "pre-commit": "^1.2.2",
-    "prettier": "^1.11.0"
-  },
-  "engines": {
-    "npm": "^6.1.0"
-  },
+  "license": "MPL-2.0",
   "files": [
     "bin/documentSchema.js",
     "bin/generateStubApi.js",
     "bin/verifyWeeSchema.js",
     "wee-schema-schema.json"
   ],
-  "license": "MPL-2.0",
-  "pre-commit": [
-    "format"
-  ],
+  "bin": {
+    "documentSchema": "bin/documentSchema.js",
+    "generateStubApi": "bin/generateStubApi.js",
+    "verifyWeeSchema": "bin/verifyWeeSchema.js"
+  },
   "scripts": {
     "eslint": "eslint . --ext js --ext json",
     "eslint-fix": "npm run eslint -- --fix",
@@ -46,7 +26,27 @@
     "generate:verifyWeeSchema:example": "cd example && node ../bin/verifyWeeSchema.js schema.json",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "npm run eslint",
-    "lint:fixpack": "fixpack",
+    "lint:sortpack": "sortpack",
     "postgenerate": "npm run format"
-  }
+  },
+  "dependencies": {
+    "ajv": "^6.5.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-mozilla": "^0.13.0",
+    "eslint-plugin-no-unsanitized": "^3.0.2",
+    "npm-run-all": "^4.1.2",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.11.0",
+    "sortpack": "^2.0.4"
+  },
+  "engines": {
+    "npm": "^6.1.0"
+  },
+  "pre-commit": [
+    "format"
+  ]
 }
