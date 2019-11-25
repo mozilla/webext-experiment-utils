@@ -11,28 +11,30 @@ const { EventManager } = ExtensionCommon;
 const EventEmitter =
   ExtensionCommon.EventEmitter || ExtensionUtils.EventEmitter;
 
-this.foo = class extends ExtensionAPI {
+this.experiments.foo = class extends ExtensionAPI {
   getAPI(context) {
     const apiEventEmitter = new EventEmitter();
     return {
-      foo: {
-        /* Do something with the given payload. */
-        doSomething: async function doSomething(payload) {
-          console.log("Called doSomething(payload)", payload);
-          return "undefined";
-        },
+      experiments: {
+        foo: {
+          /* Do something with the given payload. */
+          doSomething: async function doSomething(payload) {
+            console.log("Called doSomething(payload)", payload);
+            return "undefined";
+          },
 
-        // https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html
-        /* Fires when deemed appropriate */
-        onFoo: new EventManager(context, "foo:onFoo", fire => {
-          const listener = (eventReference, arg1) => {
-            fire.async(arg1);
-          };
-          apiEventEmitter.on("foo", listener);
-          return () => {
-            apiEventEmitter.off("foo", listener);
-          };
-        }).api(),
+          // https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html
+          /* Fires when deemed appropriate */
+          onFoo: new EventManager(context, "experiments.foo:onFoo", fire => {
+            const listener = (eventReference, arg1) => {
+              fire.async(arg1);
+            };
+            apiEventEmitter.on("foo", listener);
+            return () => {
+              apiEventEmitter.off("foo", listener);
+            };
+          }).api(),
+        },
       },
       fooDebug: {
         /* Reset the foo internal state, for debugging purposes. */

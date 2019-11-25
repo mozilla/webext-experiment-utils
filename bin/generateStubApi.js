@@ -77,13 +77,16 @@ this.${firstNamespace} = class extends ExtensionAPI {
       `);
     }
 
+    const namespaceObjectOpening = ns.replace(".", ": {");
+    const namespaceObjectClosing = "}".repeat(ns.split(".").length);
+
     // put it all together
     process.stdout.write(`
-      ${ns}: {
+      ${namespaceObjectOpening}: {
         ${functionStrings.join("\n")}
 
         ${eventStrings.join("\n")}
-      },`);
+      ${namespaceObjectClosing},`);
   }
 
   process.stdout.write(`

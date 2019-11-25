@@ -1,6 +1,6 @@
 [
   {
-    "namespace": "foo",
+    "namespace": "experiments.foo",
     "description":
       "Example interface schema to demonstrate webext-experiment-utils",
     "types": [

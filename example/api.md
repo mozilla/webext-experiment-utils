@@ -1,10 +1,10 @@
-# Namespace: `browser.foo`
+# Namespace: `browser.experiments.foo`
 
 Example interface schema to demonstrate webext-experiment-utils
 
 ## Functions
 
-### `browser.foo.doSomething( payload )`
+### `browser.experiments.foo.doSomething( payload )`
 
 Do something with the given payload.
 
@@ -17,7 +17,7 @@ Do something with the given payload.
 
 ## Events
 
-### `browser.foo.onFoo ()` Event
+### `browser.experiments.foo.onFoo ()` Event
 
 Fires when deemed appropriate
 
