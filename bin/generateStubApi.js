@@ -20,9 +20,10 @@ function schema2fakeApi(schemaApiJSON) {
   process.stdout.write(FILEHEADER);
 
   const firstNamespace = schemaApiJSON[0].namespace;
+  const lastpartOfFirstNamespace = firstNamespace.split(".").slice(-1)[0];
 
   process.stdout.write(`
-this.${firstNamespace} = class extends ExtensionAPI {
+this.${lastpartOfFirstNamespace} = class extends ExtensionAPI {
   getAPI(context) {
     const { Services } = ChromeUtils.import(
       "resource://gre/modules/Services.jsm",

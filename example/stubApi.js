@@ -4,7 +4,7 @@
 /* eslint no-console: off */
 /* global ExtensionAPI */
 
-this.experiments.foo = class extends ExtensionAPI {
+this.foo = class extends ExtensionAPI {
   getAPI(context) {
     const { Services } = ChromeUtils.import(
       "resource://gre/modules/Services.jsm",
