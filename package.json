@@ -1,7 +1,7 @@
 {
   "name": "webext-experiment-utils",
   "description": "Utilities for building / scaffolding WebExtension Experiments.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Mozilla",
   "license": "MPL-2.0",
   "files": [
