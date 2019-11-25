@@ -1,6 +1,7 @@
 /* eslint-env commonjs */
 /* eslint no-logger: off */
 /* eslint no-unused-vars: off */
+/* eslint no-console: off */
 /* global ExtensionAPI */
 
 this.experiments.foo = class extends ExtensionAPI {

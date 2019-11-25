@@ -11,6 +11,7 @@ const path = require("path");
 const FILEHEADER = `/* eslint-env commonjs */
 /* eslint no-logger: off */
 /* eslint no-unused-vars: off */
+/* eslint no-console: off */
 /* global ExtensionAPI */
 
 `;
