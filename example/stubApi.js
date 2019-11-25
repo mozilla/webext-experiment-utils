@@ -1,7 +1,6 @@
 /* eslint-env commonjs */
-/* eslint no-logger: off */
 /* eslint no-unused-vars: off */
-/* eslint no-console: off */
+/* eslint no-console: ["warn", { allow: ["info", "warn", "error"] }] */
 /* global ExtensionAPI */
 
 this.foo = class extends ExtensionAPI {
