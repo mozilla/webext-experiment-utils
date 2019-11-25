@@ -87,8 +87,8 @@ this.${lastpartOfFirstNamespace} = class extends ExtensionAPI {
         context,
         name: "${ns}:${elem.name}",
         register: fire => {
-          const listener = async (eventReference, arg1) => {
-            await fire.async(arg1);
+          const listener = async (...args) => {
+            await fire.async(...args);
           };
           apiEventEmitter.on("${elemNameWithoutOn}", listener);
           return () => {

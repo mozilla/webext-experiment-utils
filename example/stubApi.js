@@ -47,8 +47,8 @@ this.foo = class extends ExtensionAPI {
             context,
             name: "experiments.foo:onFoo",
             register: fire => {
-              const listener = async (eventReference, arg1) => {
-                await fire.async(arg1);
+              const listener = async (...args) => {
+                await fire.async(...args);
               };
               apiEventEmitter.on("foo", listener);
               return () => {
