@@ -30,7 +30,7 @@
     "postgenerate": "npm run format"
   },
   "dependencies": {
-    "ajv": "^6.5.0",
+    "ajv": "^6.12.3",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
